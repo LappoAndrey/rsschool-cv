@@ -225,7 +225,8 @@
                     <aside>Lead Software Engineer at EPAM Systems</aside>
                     <aside>June 18, 2021, Mikita was Andrey’s teacher</aside>
                     <br>
-                    <article class="paragraph">Andrey was student at ITAcademy (Python training course), and I have a good impression of him. Andrey properly learned all materials and completed all tasks in a timely manner, and in general is very responsible. He is very thoughtful person, who would ask interesting and relevant questions in order to understand new material. Andrey has a good grasp of practical usage of Django framework, and I would like to specifically highlight his skill and knowledge in area of working with relational databases (postgre and sqlite). He is also good in communication with his colleagues and clients, not hesitant to take initiative and help someone when needed.</article>
+                    <article class="paragraph">
+                        <h4>Andrey was student at ITAcademy (Python training course), and I have a good impression of him. Andrey properly learned all materials and completed all tasks in a timely manner, and in general is very responsible. He is very thoughtful person, who would ask interesting and relevant questions in order to understand new material. Andrey has a good grasp of practical usage of Django framework, and I would like to specifically highlight his skill and knowledge in area of working with relational databases (postgre and sqlite). He is also good in communication with his colleagues and clients, not hesitant to take initiative and help someone when needed.</h4></article>
                 </div>
             </div>
     
@@ -274,60 +275,26 @@
                         <b>Vigenere cipher</b>
                     </summary>
                     <pre>
-                        <code class="javascript">
-                            export default class VigenereCipheringstrachine {
-        
-                                constructor(isDirect) {
-                                    if (isDirect == false)
-                                        this.reverse = true;
-                                    }
-                                    
-                                encrypt(m, k) {
-                                    if(!m || !k) {
-                                        throw new Error('Incorrect arguments!');
-                                    }
-                                        const a = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-                                        m = m.toUpperCase();
-                                        k = k.toUpperCase();
-                                        let r = '';	
-                                        let j = 0;
-                                        for(let i=0; i<m.length; i++){
-                                            if(a.includes(m[i])) { 			
-                                                let mi = a.indexOf(m[i]);
-                                                let ki_s = k[(j >= k.length) ? (j % k.length) : j];
-                                                let ki = a.indexOf( ki_s );
-                                                let c = a[(mi + ki) % 26];			
-                                                r += c;	
-                                                j++;}
-                                            else r += m[i];															
-                                        }
-                                        return this.reverse ? r.split('').reverse().join('') : r;
-                                    };
-                                
-                                decrypt(m, k) {
-                                    if(!m || !k) {
-                                        throw new Error('Incorrect arguments!');
-                                    }
-                                        let a = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-                                        m = m.toUpperCase();
-                                        k = k.toUpperCase();
-                                        let r = '';	
-                                        let j = 0;
-                                        for(let i=0; i<m.length; i++){
-                                            if(a.includes(m[i])) { 			
-                                                let mi = a.indexOf(m[i]);
-                                                let ki_s = k[(j >= k.length) ? (j % k.length) : j];
-                                                let ki = a.indexOf( ki_s );
-                                                let c = a[(26 + mi - ki) % 26]; 			
-                                                r += c;	
-                                                j++;}
-                                            else r += m[i];															
-                                        }
-                                        return this.reverse ? r.split('').reverse().join('') : r;
-                                    };
-                                };
-                            </code>
-                        </pre>
+                        <code class="language-python">
+                            import os
+                            import fileinput
+
+                            def replace_in_files(root_folder, old_string, new_string):
+                                for foldername, subfolders, filenames in os.walk(root_folder):
+                                    for filename in filenames:
+                                        filepath = os.path.join(foldername, filename)
+                                        with fileinput.FileInput(filepath, inplace=True, backup='.bak') as file:
+                                            for line in file:
+                                                print(line.replace(old_string, new_string), end='')
+
+                            # Пример использования:
+                            root_directory = '/путь/к/вашей/главной/папке'
+                            old_text = 'Старая строка'
+                            new_text = 'Новая строка'
+
+                            replace_in_files(root_directory, old_text, new_text)
+                        </code>
+                    </pre>
                 </details>
 
 
